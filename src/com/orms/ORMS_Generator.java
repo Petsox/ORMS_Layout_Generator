@@ -77,7 +77,7 @@ public class ORMS_Generator {
         JTextArea textArea = new JTextArea(20, 60);
         textArea.setEditable(false);
 
-        textArea.append(CodeGenerator.GenerateTracks(data));
+        textArea.append(CodeGenerator.generateTracks(data));
 
         JScrollPane scrollPane = new JScrollPane(textArea);
 

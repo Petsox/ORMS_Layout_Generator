@@ -2,7 +2,7 @@ package com.orms;
 
 public class CodeGenerator {
 
-    protected static String GenerateTracks(String[][] LayoutMap){
+    protected static String generateTracks(String[][] LayoutMap){
         // x, y, z - Contents, q - length / name-(Switch/Signal), r - to state (Switch)
         final String TemplateTrack = "gui.newLabel(mainGui, y, x, \"z\", black, white, q),";
         final String TemplateSwitch = "gui.newSwitch(mainGui, y, x, \"z\", \"r\", \"q\", Switch),";
@@ -14,7 +14,7 @@ public class CodeGenerator {
         String Tracks = "Tracks = {";
         String Signals = "Signals = {";
         String Switches = "Switches = {";
-        String End = "}";
+        String End = "}" + "\n";
 
         String StorageSignals = "\n";
         String StorageTracks = "\n";
