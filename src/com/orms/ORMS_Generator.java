@@ -28,6 +28,9 @@ public class ORMS_Generator {
         table.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
 
         JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
         table.getTableHeader().setReorderingAllowed(false);
 
         scrollPane.getViewport().setPreferredSize(new Dimension(1200, 800));
