@@ -5,6 +5,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ORMS_Generator {
     protected JPanel mainFrame;
@@ -44,6 +48,22 @@ public class ORMS_Generator {
             }
         });
 
+        JButton saveToFileButton = new JButton("Save to .txt File");
+        saveToFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveDataToTxtFile();
+            }
+        });
+
+        JButton loadFromFileButton = new JButton("Load from .txt File");
+        loadFromFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadDataFromTxtFile();
+            }
+        });
+
         JButton clearButton = new JButton("Clear Table");
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -62,6 +82,8 @@ public class ORMS_Generator {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(saveButton);
+        buttonPanel.add(saveToFileButton);
+        buttonPanel.add(loadFromFileButton);
         buttonPanel.add(clearButton);
         buttonPanel.add(rulesButton);
 
@@ -85,6 +107,77 @@ public class ORMS_Generator {
         displayFrame.pack();
         displayFrame.setLocationRelativeTo(null); // Center the frame on the screen
         displayFrame.setVisible(true);
+    }
+
+    private void saveDataToTxtFile() {
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showSaveDialog(mainFrame);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try {
+                File file = fileChooser.getSelectedFile();
+                FileWriter writer = new FileWriter(file);
+
+                int numRows = table.getRowCount();
+                int numColumns = table.getColumnCount();
+
+                for (int row = 0; row < numRows; row++) {
+                    for (int column = 0; column < numColumns; column++) {
+                        String cellValue = String.valueOf(table.getValueAt(row, column));
+                        writer.write(cellValue);
+                        if (column < numColumns - 1) {
+                            writer.write("\t"); // Separate values with tab
+                        }
+                    }
+                    writer.write("\n"); // Newline for each row
+                }
+
+                writer.close();
+                JOptionPane.showMessageDialog(mainFrame, "Data saved to " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void loadDataFromTxtFile() {
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(mainFrame);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try {
+                File file = fileChooser.getSelectedFile();
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                List<String[]> loadedData = new ArrayList<>();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] rowData = line.split("\t");
+                    loadedData.add(rowData);
+                }
+
+                reader.close();
+
+                // Populate the table with loaded data
+                int numRows = loadedData.size();
+                int numColumns = loadedData.get(0).length;
+
+                for (int row = 0; row < numRows; row++) {
+                    for (int column = 0; column < numColumns; column++) {
+                        String cellValue = loadedData.get(row)[column];
+                        if (cellValue.equals("null")) {
+                            table.setValueAt("", row, column);
+                        } else {
+                            table.setValueAt(cellValue, row, column);
+                        }
+                    }
+                }
+
+                JOptionPane.showMessageDialog(mainFrame, "Data loaded from " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static void displayRules() {

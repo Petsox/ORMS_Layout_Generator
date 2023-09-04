@@ -53,16 +53,22 @@ public class CodeGenerator {
                                 StorageSignals = StorageSignals + Temp;
 
                             }
-                        }else {
+                        }else if (LayoutMap[i][j].equals("═") || LayoutMap[i][j].equals("╔")){
 
                             Temp = TemplateTrack.replace("x", Integer.toString(i));
                             Temp = Temp.replace("y", Integer.toString(j));
                             Temp2 = LayoutMap[i][j];
 
-                            while (LayoutMap[i][j + loop] == "═"){
+                            while (LayoutMap[i][j + loop].equals("═")){
                                 Temp2 = Temp2 + LayoutMap[i][j + loop];
                                 loop++;
+                                if (LayoutMap[i][j + loop].equals("╗")){
+                                    Temp2 = Temp2 + LayoutMap[i][j + loop];
+                                    loop++;
+                                }
                             }
+
+
 
                             Temp = Temp.replace("z", Temp2);
                             Temp = Temp.replace("q", Integer.toString(loop));

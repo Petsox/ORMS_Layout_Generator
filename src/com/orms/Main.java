@@ -5,7 +5,7 @@ public class Main {
     /**
      * Tracks, Switches and Signals Cheatsheet
      *
-     * Tracks, Switches: ║ | ═ ╔ ╗ ╚ ╝
+     * Tracks, Switches: ║ | ═ ╔ ╗ ╚ ╝ ╡ ╞ ╧ ╤
      *
      * Signals: < > V ^
      * **/
