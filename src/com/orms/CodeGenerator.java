@@ -53,7 +53,7 @@ public class CodeGenerator {
                                 StorageSignals = StorageSignals + Temp;
 
                             }
-                        }else if (LayoutMap[i][j].equals("═") || LayoutMap[i][j].equals("╔")){
+                        }else if (LayoutMap[i][j].equals("═") || LayoutMap[i][j].equals("╔") || LayoutMap[i][j].equals("║")){
 
                             Temp = TemplateTrack.replace("x", Integer.toString(i));
                             Temp = Temp.replace("y", Integer.toString(j));
@@ -63,6 +63,10 @@ public class CodeGenerator {
                                 Temp2 = Temp2 + LayoutMap[i][j + loop];
                                 loop++;
                                 if (LayoutMap[i][j + loop].equals("╗")){
+                                    Temp2 = Temp2 + LayoutMap[i][j + loop];
+                                    loop++;
+                                }
+                                if (LayoutMap[i][j + loop].equals("╝")){
                                     Temp2 = Temp2 + LayoutMap[i][j + loop];
                                     loop++;
                                 }

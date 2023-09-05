@@ -48,7 +48,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton saveToFileButton = new JButton("Save to .txt File");
+        JButton saveToFileButton = new JButton("Save to File");
         saveToFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,7 +56,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton loadFromFileButton = new JButton("Load from .txt File");
+        JButton loadFromFileButton = new JButton("Load from File");
         loadFromFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -244,7 +244,7 @@ public class ORMS_Generator {
 
     public static void main() {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("ORMS Layout Generator v1.0 by Petsox");
+            JFrame frame = new JFrame("ORMS Layout Generator v1.5 by Petsox");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             ORMS_Generator generator = new ORMS_Generator();
