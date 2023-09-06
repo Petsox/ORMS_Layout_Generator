@@ -4,17 +4,19 @@ public class CodeGenerator {
 
     protected static String generateTracks(String[][] LayoutMap){
         // x, y, z - Contents, q - length / name-(Switch/Signal), r - to state (Switch)
-        final String TemplateTrack = "gui.newLabel(mainGui, y, x, \"z\", black, white, q),";
-        final String TemplateSwitch = "gui.newSwitch(mainGui, y, x, \"z\", \"r\", \"q\", Switch),";
-        final String TemplateSignal = "gui.newSignal(mainGui, y, x, \"q\", red, \"z\", Signal),";
+        final String TemplateTrack = "{x, y, \"z\"},";
+        final String TemplateSwitch = "{x, y, \"z\", \"r\", \"q\"},";
+        final String TemplateSignal = "{x, y, \"q\", \"z\"},";
         String Temp = "";
         String Temp2 = "";
         String Output;
         int loop = 1;
-        String Tracks = "Tracks = {";
-        String Signals = "Signals = {";
-        String Switches = "Switches = {";
+        String Config = "Config = {}\n";
+        String Tracks = "Config.Tracks = {";
+        String Signals = "Config.Signals = {";
+        String Switches = "Config.Switches = {";
         String End = "}" + "\n";
+        String Return = "return Config";
 
         String StorageSignals = "\n";
         String StorageTracks = "\n";
@@ -84,7 +86,7 @@ public class CodeGenerator {
                 }else loop--;
             }
         }
-        Output = Signals + StorageSignals + End + Tracks + StorageTracks + End + Switches + StorageSwitches + End;
+        Output = Config + Signals + StorageSignals + End + Tracks + StorageTracks + End + Switches + StorageSwitches + End + Return;
 
         return Output;
     }
