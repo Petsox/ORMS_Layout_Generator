@@ -4,9 +4,9 @@ public class CodeGenerator {
 
     protected static String generateTracks(String[][] LayoutMap){
         // x, y, z - Contents, q - length / name-(Switch/Signal), r - to state (Switch)
-        final String TemplateTrack = "{x, y, \"z\"},";
-        final String TemplateSwitch = "{x, y, \"z\", \"r\", \"q\"},";
-        final String TemplateSignal = "{x, y, \"q\", \"z\"},";
+        final String TemplateTrack = "{y, x, \"z\"},";
+        final String TemplateSwitch = "{y, x, \"z\", \"r\", \"q\"},";
+        final String TemplateSignal = "{y, x, \"q\", \"z\"},";
         String Temp = "";
         String Temp2 = "";
         String Output;
