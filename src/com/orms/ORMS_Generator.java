@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ORMS_Generator {
+
+    private static final int versionMajor = 1;
+    private static final int versionMinor = 6;
+
+    private static final int getVersionMinorer = 1;
+
     protected JPanel mainFrame;
     private JTable table1;
 
@@ -34,6 +40,10 @@ public class ORMS_Generator {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setPreferredWidth(15);
+        }
 
         table.getTableHeader().setReorderingAllowed(false);
 
@@ -72,7 +82,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton rulesButton = new JButton("Rules");
+        JButton rulesButton = new JButton("About");
         rulesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -190,7 +200,7 @@ public class ORMS_Generator {
         textArea.append("\n" +
                 "Tracks, Switches and Signals Cheatsheet\n" +
                 "\n" +
-                "Tracks, Switches: ║ | ═ ╔ ╗ ╚ ╝\n" +
+                "Tracks, Switches: ║ | ═ ╔ ╗ ╚ ╝ ╡ ╞ ╧ ╤\n" +
                 "\n" +
                 "Signals: < > V ^\n" +
                 "\n" +
@@ -204,7 +214,7 @@ public class ORMS_Generator {
                 "1. Base position, 2. space + V + space (Switch in Czech is Vyhybka so V), 3. Switched position, 4. Name of the Switch\n"+
                 "Example: ╝ V ═ Vy2, will show up as clickable Switch with name Si1, base position ╝ and switched position ═\n"+
                 "\n" +
-                "Thats it, enjoy. PS FD is the last collum" +
+                "Last Update: shrunk columns " +
                 "\n" +
                 "Petsox"
         );
@@ -244,7 +254,7 @@ public class ORMS_Generator {
 
     public static void main() {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("ORMS Layout Generator v1.5 by Petsox");
+            JFrame frame = new JFrame("ORMS Layout Generator v" + versionMajor + "." + versionMinor + "." + getVersionMinorer + " by Petsox");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             ORMS_Generator generator = new ORMS_Generator();
