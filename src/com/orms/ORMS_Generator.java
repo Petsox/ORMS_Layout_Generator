@@ -15,7 +15,7 @@ public class ORMS_Generator {
     private static final int versionMajor = 1;
     private static final int versionMinor = 6;
 
-    private static final int getVersionMinorer = 1;
+    private static final int getVersionMinorer = 4;
 
     protected JPanel mainFrame;
     private JTable table1;
@@ -133,7 +133,12 @@ public class ORMS_Generator {
 
                 for (int row = 0; row < numRows; row++) {
                     for (int column = 0; column < numColumns; column++) {
-                        String cellValue = String.valueOf(table.getValueAt(row, column));
+                        String cellValue;
+                        if (table.getValueAt(row, column).equals("")){
+                            cellValue = "null";
+                        }else {
+                            cellValue = String.valueOf(table.getValueAt(row, column));
+                        }
                         writer.write(cellValue);
                         if (column < numColumns - 1) {
                             writer.write("\t"); // Separate values with tab
