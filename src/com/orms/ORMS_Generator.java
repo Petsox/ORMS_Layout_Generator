@@ -12,10 +12,10 @@ import java.util.List;
 
 public class ORMS_Generator {
 
-    private static final int versionMajor = 1;
-    private static final int versionMinor = 6;
+    private static final int versionMajor = 2;
+    private static final int versionMinor = 0;
 
-    private static final int getVersionMinorer = 4;
+    private static final int getVersionMinorer = 0;
 
     protected JPanel mainFrame;
     private JTable table1;
@@ -42,14 +42,14 @@ public class ORMS_Generator {
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < table.getColumnCount(); i++) {
-            table.getColumnModel().getColumn(i).setPreferredWidth(15);
+            table.getColumnModel().getColumn(i).setPreferredWidth(25);
         }
 
         table.getTableHeader().setReorderingAllowed(false);
 
         scrollPane.getViewport().setPreferredSize(new Dimension(1200, 800));
 
-        JButton saveButton = new JButton("Export Code");
+        JButton saveButton = new JButton("Exportovat LUa Kód");
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,7 +58,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton saveToFileButton = new JButton("Save to File");
+        JButton saveToFileButton = new JButton("Uložit");
         saveToFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,7 +66,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton loadFromFileButton = new JButton("Load from File");
+        JButton loadFromFileButton = new JButton("Načíst");
         loadFromFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +74,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton clearButton = new JButton("Clear Table");
+        JButton clearButton = new JButton("Vymazat Plochu");
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,7 +82,7 @@ public class ORMS_Generator {
             }
         });
 
-        JButton rulesButton = new JButton("About");
+        JButton rulesButton = new JButton("Nápověda");
         rulesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +103,7 @@ public class ORMS_Generator {
     }
 
     private static void displayDataInNewWindow() {
-        JFrame displayFrame = new JFrame("Exported Lua Code for ORMS");
+        JFrame displayFrame = new JFrame("Vyexportovaný kód pro ORMS");
         displayFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JTextArea textArea = new JTextArea(20, 60);
@@ -148,7 +148,7 @@ public class ORMS_Generator {
                 }
 
                 writer.close();
-                JOptionPane.showMessageDialog(mainFrame, "Data saved to " + file.getAbsolutePath());
+                JOptionPane.showMessageDialog(mainFrame, "Data uložena do " + file.getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -188,7 +188,7 @@ public class ORMS_Generator {
                     }
                 }
 
-                JOptionPane.showMessageDialog(mainFrame, "Data loaded from " + file.getAbsolutePath());
+                JOptionPane.showMessageDialog(mainFrame, "Data načtena z " + file.getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -196,30 +196,43 @@ public class ORMS_Generator {
     }
 
     private static void displayRules() {
-        JFrame displayFrame = new JFrame("Rules to follow for optimal operation");
+        JFrame displayFrame = new JFrame("Podmíky, které je nutno dodržet pro funkčnost");
         displayFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JTextArea textArea = new JTextArea(20, 60);
+        JTextArea textArea = new JTextArea(30, 80);
         textArea.setEditable(false);
 
         textArea.append("\n" +
-                "Tracks, Switches and Signals Cheatsheet\n" +
+                "Koleje a výhybky\n" +
                 "\n" +
-                "Tracks, Switches: ║ | ═ ╔ ╗ ╚ ╝ ╡ ╞ ╧ ╤\n" +
+                "Pro tvorbu kolejí/výhybek používejte jen tyto symboly: ║ | ═ ╔ ╗ ╚ ╝ ╡ ╞ ╧ ╤\n" +
                 "\n" +
-                "Signals: < > V ^\n" +
+                "Pro směr návěstí tyto symboly: < > V ^\n" +
                 "\n" +
-                "Now the Rules: \n" +
+                "Pravidla: \n" +
                 "\n" +
-                "Signals Creation Rule:\n" +
-                "1. Direction of the train travel, 2. space + N + space (Signal in Czech is Návěstidlo so N), 3. Name of the Signal\n" +
-                "Example: < N Si1, will show up as Signal with name Si1\n"+
+                "Návěsti:\n" +
+                "Příklad: < N Pr5VjKr1\n" +
+                "\n"+
+                "< označuje směr jízdy vlaku v tomto případě <--,   Pr označuje předvěst. Tudíž se bude jednat o předvěst pro návěst 5VjKr1\n"+
+                "\n"+
+                "Návěst 5VjKr1, označuje návěst, která má ve hře 5 světel, Vj - Vjezdová / Od - Odjezdová " + "\n"+
+                "Kr - Krupka (jméno stanice do/z které vlak přijede/odjede po projetí návěsti) a 1 je číslo návěsti"+
+                "\n"+
+                "\n"+
+                "Návěsti máme 1,4 a 5 světlové"+
                 "\n" +
-                "Switches Creation Rule:\n" +
-                "1. Base position, 2. space + V + space (Switch in Czech is Vyhybka so V), 3. Switched position, 4. Name of the Switch\n"+
-                "Example: ╝ V ═ Vy2, will show up as clickable Switch with name Si1, base position ╝ and switched position ═\n"+
+                "\n"+
+                "Dále máme Posunovací návěsti, fungují stejně, jen se nemusí uvádět počet světel a Vj/Od. Sh - Shunt(Posun): < N ShKr1"+
+                "\n"+
+                "\n"+
+                "Vyhybky:\n" +
+                "Příklad: ╝ V ═ Vy2, Vyhybka na kterou se dá kliknout s výhozí pozicí ╝. V označuje vyhybku. ═ přehozená pozice\n"+
+                "Pak následuje Vy2, což je jméno a číslo výhybky. Musí být stejné jako jméno Receiveru ve hře, pod vyhybkou\n"+
                 "\n" +
-                "Last Update: shrunk columns " +
+                "Poslední update 2.0: Čeština." +
+                "\n" +
+                "Přepsáno pro novou verzi ORMS" +
                 "\n" +
                 "Petsox"
         );

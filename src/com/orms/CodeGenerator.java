@@ -2,25 +2,23 @@ package com.orms;
 
 public class CodeGenerator {
 
-    protected static String generateTracks(String[][] LayoutMap){
-        // x, y, z - Contents, q - length / name-(Switch/Signal), r - to state (Switch)
-        final String TemplateTrack = "{y, x, \"z\"},";
-        final String TemplateSwitch = "{y, x, \"z\", \"r\", \"q\"},";
-        final String TemplateSignal = "{y, x, \"q\", \"z\"},";
-        String Temp = "";
-        String Temp2 = "";
-        String Output;
-        int loop = 1;
-        String Config = "Config = {}\n";
-        String Tracks = "Config.Tracks = {";
-        String Signals = "Config.Signals = {";
-        String Switches = "Config.Switches = {";
-        String End = "}" + "\n";
-        String Return = "return Config";
+    // x, y, z - Contents, q - length / name-(Switch/Signal), r - to state (Switch)
+    final static String TemplateTrack = "{y, x, \"z\"},";
+    final static String TemplateSwitch = "{y, x, \"z\", \"r\", \"q\"},";
+    static String Temp = "";
+    static String Temp2 = "";
+    static String Output;
+    static int loop = 1;
+    static String Config = "Config = {}\n";
+    static String Tracks = "Config.Tracks = {";
+    static String Switches = "Config.Switches = {";
+    static String End = "}" + "\n";
+    static String Return = "return Config";
+    static String StorageSignals = "";
+    static String StorageTracks = "\n";
+    static String StorageSwitches = "\n";
 
-        String StorageSignals = "\n";
-        String StorageTracks = "\n";
-        String StorageSwitches = "\n";
+    public static String generateTracks(String[][] LayoutMap){
 
         for (int i = 0; i < LayoutMap.length; i++) {
 
@@ -46,16 +44,10 @@ public class CodeGenerator {
 
                             } else if (LayoutMap[i][j].charAt(2) == 'N') {
 
-                                Temp =  TemplateSignal.replace("x", Integer.toString(i));
-                                Temp = Temp.replace("y", Integer.toString(j));
-                                Temp = Temp.replace('z', LayoutMap[i][j].charAt(0));
-                                Temp = Temp.replace("q", LayoutMap[i][j].substring(4));
-                                Temp = Temp + '\n';
-
-                                StorageSignals = StorageSignals + Temp;
+                                Replace.feedToTemplate(LayoutMap,i,j);
 
                             }
-                        }else if (LayoutMap[i][j].equals("═") || LayoutMap[i][j].equals("╔") || LayoutMap[i][j].equals("║") || LayoutMap[i][j].equals("╚") || LayoutMap[i][j].equals("╝") || LayoutMap[i][j].equals("╗")){
+                        }else if (LayoutMap[i][j]!= null){
 
                             Temp = TemplateTrack.replace("x", Integer.toString(i));
                             Temp = Temp.replace("y", Integer.toString(j));
@@ -82,8 +74,6 @@ public class CodeGenerator {
                                 }
                             }
 
-
-
                             Temp = Temp.replace("z", Temp2);
                             Temp = Temp.replace("q", Integer.toString(loop));
                             Temp = Temp + '\n';
@@ -94,8 +84,21 @@ public class CodeGenerator {
                 }else loop--;
             }
         }
-        Output = Config + Signals + StorageSignals + End + Tracks + StorageTracks + End + Switches + StorageSwitches + End + Return;
+
+        StorageSignals = Replace.Signal1 + End + Replace.Signal4 + End + Replace.Signal5 + End + Replace.SignalSh + End + Replace.SignalEx + End;
+
+        Output = Config + StorageSignals + Tracks + StorageTracks + End + Switches + StorageSwitches + End + Return;
+
+        Replace.clearCache();
+        clearCache();
 
         return Output;
+    }
+
+    private static void clearCache(){
+        StorageSignals = "";
+        StorageTracks = "\n";
+        StorageSwitches = "\n";
+
     }
 }
