@@ -206,31 +206,31 @@ public class ORMS_Generator {
                 "\n" +
                 "Pro tvorbu kolejí/výhybek používejte jen tyto symboly: ║ | ═ ╔ ╗ ╚ ╝ ╡ ╞ ╧ ╤\n" +
                 "\n" +
-                "Pro směr návěstí tyto symboly: < > V ^\n" +
+                "Pro směr návěstidel tyto symboly: < > V ^\n" +
                 "\n" +
                 "Pravidla: \n" +
                 "\n" +
                 "Návěstidla:\n" +
                 "Příklad: < N Pr5VjKr1\n" +
                 "\n" +
-                "< označuje směr jízdy vlaku v tomto případě <--,   Pr označuje předvěst. Tudíž se bude jednat o předvěst pro návěstidlo 5VjKr1\n" +
+                "< označuje směr jízdy vlaku, v tomto případě <-- (vlevo), Pr označuje předvěst. Tudíž se bude jednat o předvěst pro návěstidlo 5VjKr1\n" +
                 "\n" +
-                "Návěstidlo 5VjKr1, označuje návěstitdlo, které má ve hře 5 světel, Vj - Vjezdové / Od - Odjezdové " + "\n" +
+                "Návěstidlo 5VjKr1 označuje návěstidlo, které má ve hře 5 světel, Vj - Vjezdové / Od - Odjezdové" + "\n" +
                 "\n" +
-                "Vjezd: Kr - Krupka (jméno stanice z které vlak přijede) a 1 je číslo koleje u které návěstidlo stojí\n" +
-                "Odjezd: Kr - Krupka (jméno stanice do které vlak jede)\n" +
+                "Vjezdové: Kr - Krupka (jméno stanice ze které vlak přijede), 1 je číslo koleje, u které návěstidlo stojí\n" +
+                "Odjezdové: Kr - Krupka (jméno stanice do které vlak jede), 1 opět číslo koleje\n" +
                 "\n" +
-                "Znamenaje, že 5VjKr1 je návěstidlo: 5ti světelné, vjezdové od stanice Krupka a stojí u koleje čislo 1\n" +
+                "Znamenaje, že 5VjKr1 je návěstidlo: 5 světelné, vjezdové od stanice Krupka a stojí u koleje čislo 1\n" +
                 "\n" +
-                "Návěsti máme 1,4 a 5 světlové" +
-                "\n" +
-                "\n" +
-                "Seřaďovací návěstidla: Nemusí se uvádět počet světel a Vj/Od. Sh - Shunt(Posun) Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
+                "Návěstidla máme 1,4 a 5 světlové" +
                 "\n" +
                 "\n" +
-                "Vyhybky:\n" +
-                "Příklad: ╝ V ═ Vy2, Vyhybka na kterou se dá kliknout s výhozí pozicí ╝. V označuje vyhybku. ═ přehozená pozice\n" +
-                "Pak následuje Vy2, což je jméno a číslo výhybky. Musí být stejné jako jméno Receiveru ve hře, pod vyhybkou\n" +
+                "Seřaďovací návěstidla (pro posun): Nemusí se uvádět počet světel a Vj/Od., Sh - Shunt(Posun), Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
+                "\n" +
+                "\n" +
+                "Výhybky:\n" +
+                "Příklad: ╝ V ═ Vy2: Výhybka, na kterou se dá kliknout s výchozí pozicí ╝, V označuje vyhybku, ═ je přehozená pozice\n" +
+                "Pak následuje Vy2, což je jméno a číslo výhybky. Musí být stejné jako jméno receiveru pod výhybkou\n" +
                 "\n" +
                 "Poslední update 2.0: Čeština." +
                 "\n" +
