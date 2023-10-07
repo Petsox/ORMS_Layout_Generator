@@ -15,10 +15,9 @@ public class ORMS_Generator {
     private static final int versionMajor = 2;
     private static final int versionMinor = 0;
 
-    private static final int getVersionMinorer = 0;
+    private static final int getVersionMinorer = 2;
 
     protected JPanel mainFrame;
-    private JTable table1;
 
     private static JTable table;
     private static DefaultTableModel model;
@@ -134,9 +133,9 @@ public class ORMS_Generator {
                 for (int row = 0; row < numRows; row++) {
                     for (int column = 0; column < numColumns; column++) {
                         String cellValue;
-                        if (table.getValueAt(row, column).equals("")){
+                        if (table.getValueAt(row, column) == "") {
                             cellValue = "null";
-                        }else {
+                        } else {
                             cellValue = String.valueOf(table.getValueAt(row, column));
                         }
                         writer.write(cellValue);
@@ -211,24 +210,27 @@ public class ORMS_Generator {
                 "\n" +
                 "Pravidla: \n" +
                 "\n" +
-                "Návěsti:\n" +
+                "Návěstidla:\n" +
                 "Příklad: < N Pr5VjKr1\n" +
-                "\n"+
-                "< označuje směr jízdy vlaku v tomto případě <--,   Pr označuje předvěst. Tudíž se bude jednat o předvěst pro návěst 5VjKr1\n"+
-                "\n"+
-                "Návěst 5VjKr1, označuje návěst, která má ve hře 5 světel, Vj - Vjezdová / Od - Odjezdová " + "\n"+
-                "Kr - Krupka (jméno stanice do/z které vlak přijede/odjede po projetí návěsti) a 1 je číslo návěsti"+
-                "\n"+
-                "\n"+
-                "Návěsti máme 1,4 a 5 světlové"+
                 "\n" +
-                "\n"+
-                "Dále máme Posunovací návěsti, fungují stejně, jen se nemusí uvádět počet světel a Vj/Od. Sh - Shunt(Posun): < N ShKr1"+
-                "\n"+
-                "\n"+
+                "< označuje směr jízdy vlaku v tomto případě <--,   Pr označuje předvěst. Tudíž se bude jednat o předvěst pro návěstidlo 5VjKr1\n" +
+                "\n" +
+                "Návěstidlo 5VjKr1, označuje návěstitdlo, které má ve hře 5 světel, Vj - Vjezdové / Od - Odjezdové " + "\n" +
+                "\n" +
+                "Vjezd: Kr - Krupka (jméno stanice z které vlak přijede) a 1 je číslo koleje u které návěstidlo stojí\n" +
+                "Odjezd: Kr - Krupka (jméno stanice do které vlak jede)\n" +
+                "\n" +
+                "Znamenaje, že 5VjKr1 je návěstidlo: 5ti světelné, vjezdové od stanice Krupka a stojí u koleje čislo 1\n" +
+                "\n" +
+                "Návěsti máme 1,4 a 5 světlové" +
+                "\n" +
+                "\n" +
+                "Seřaďovací návěstidla: Nemusí se uvádět počet světel a Vj/Od. Sh - Shunt(Posun) Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
+                "\n" +
+                "\n" +
                 "Vyhybky:\n" +
-                "Příklad: ╝ V ═ Vy2, Vyhybka na kterou se dá kliknout s výhozí pozicí ╝. V označuje vyhybku. ═ přehozená pozice\n"+
-                "Pak následuje Vy2, což je jméno a číslo výhybky. Musí být stejné jako jméno Receiveru ve hře, pod vyhybkou\n"+
+                "Příklad: ╝ V ═ Vy2, Vyhybka na kterou se dá kliknout s výhozí pozicí ╝. V označuje vyhybku. ═ přehozená pozice\n" +
+                "Pak následuje Vy2, což je jméno a číslo výhybky. Musí být stejné jako jméno Receiveru ve hře, pod vyhybkou\n" +
                 "\n" +
                 "Poslední update 2.0: Čeština." +
                 "\n" +

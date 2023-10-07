@@ -18,21 +18,28 @@ public class CodeGenerator {
     static String StorageTracks = "\n";
     static String StorageSwitches = "\n";
 
-    public static String generateTracks(String[][] LayoutMap){
+    private static void clearCache() {
+        StorageSignals = "";
+        StorageTracks = "\n";
+        StorageSwitches = "\n";
+
+    }
+
+    public static String generateTracks(String[][] LayoutMap) {
 
         for (int i = 0; i < LayoutMap.length; i++) {
 
             for (int j = 0; j < 160; j++) {
 
-                if (loop <= 1){
+                if (loop <= 1) {
 
-                    if (LayoutMap[i][j] != ""){
+                    if (LayoutMap[i][j] != "") {
 
-                        if (LayoutMap[i][j].length() > 1){
+                        if (LayoutMap[i][j].length() > 1) {
 
-                            if (LayoutMap[i][j].charAt(2) == 'V'){
+                            if (LayoutMap[i][j].charAt(2) == 'V') {
 
-                                Temp =  TemplateSwitch.replace("x", Integer.toString(i));
+                                Temp = TemplateSwitch.replace("x", Integer.toString(i));
                                 Temp = Temp.replace("y", Integer.toString(j));
                                 Temp = Temp.replace('z', LayoutMap[i][j].charAt(0));
                                 Temp = Temp.replace('r', LayoutMap[i][j].charAt(4));
@@ -44,31 +51,31 @@ public class CodeGenerator {
 
                             } else if (LayoutMap[i][j].charAt(2) == 'N') {
 
-                                Replace.feedToTemplate(LayoutMap,i,j);
+                                Replace.feedToTemplate(LayoutMap, i, j);
 
                             }
-                        }else if (LayoutMap[i][j]!= null){
+                        } else if (LayoutMap[i][j] != null) {
 
                             Temp = TemplateTrack.replace("x", Integer.toString(i));
                             Temp = Temp.replace("y", Integer.toString(j));
                             Temp2 = LayoutMap[i][j];
 
-                            while (LayoutMap[i][j + loop].equals("═")){
+                            while (LayoutMap[i][j + loop].equals("═")) {
                                 Temp2 = Temp2 + LayoutMap[i][j + loop];
                                 loop++;
-                                if (LayoutMap[i][j + loop].equals("╗")){
+                                if (LayoutMap[i][j + loop].equals("╗")) {
                                     Temp2 = Temp2 + LayoutMap[i][j + loop];
                                     loop++;
                                 }
-                                if (LayoutMap[i][j + loop].equals("╝")){
+                                if (LayoutMap[i][j + loop].equals("╝")) {
                                     Temp2 = Temp2 + LayoutMap[i][j + loop];
                                     loop++;
                                 }
-                                if (LayoutMap[i][j + loop].equals("╚")){
+                                if (LayoutMap[i][j + loop].equals("╚")) {
                                     Temp2 = Temp2 + LayoutMap[i][j + loop];
                                     loop++;
                                 }
-                                if (LayoutMap[i][j + loop].equals("╗")){
+                                if (LayoutMap[i][j + loop].equals("╗")) {
                                     Temp2 = Temp2 + LayoutMap[i][j + loop];
                                     loop++;
                                 }
@@ -81,7 +88,7 @@ public class CodeGenerator {
                             StorageTracks = StorageTracks + Temp;
                         }
                     }
-                }else loop--;
+                } else loop--;
             }
         }
 
@@ -95,10 +102,4 @@ public class CodeGenerator {
         return Output;
     }
 
-    private static void clearCache(){
-        StorageSignals = "";
-        StorageTracks = "\n";
-        StorageSwitches = "\n";
-
-    }
 }
