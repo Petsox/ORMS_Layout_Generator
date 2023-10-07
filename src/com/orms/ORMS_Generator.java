@@ -225,7 +225,7 @@ public class ORMS_Generator {
                 "Návěstidla máme 1,4 a 5 světlové" +
                 "\n" +
                 "\n" +
-                "Seřaďovací návěstidla (pro posun): Nemusí se uvádět počet světel a Vj/Od., Sh - Shunt(Posun), Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
+                "Seřaďovací návěstidla (pro posun): Nemusí se uvádět počet světel a Vj/Od, Sh - Shunt(Posun), Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
                 "\n" +
                 "\n" +
                 "Výhybky:\n" +
