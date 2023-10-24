@@ -92,7 +92,7 @@ public class CodeGenerator {
             }
         }
 
-        StorageSignals = Replace.Signal1 + End + Replace.Signal4 + End + Replace.Signal5 + End + Replace.SignalSh + End + Replace.SignalEx + End;
+        StorageSignals = Replace.Signal1 + End + Replace.Signal3 + End + Replace.Signal4 + End + Replace.Signal5 + End + Replace.SignalSh + End + Replace.SignalEx + End;
 
         Output = Config + StorageSignals + Tracks + StorageTracks + End + Switches + StorageSwitches + End + Return;
 

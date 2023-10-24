@@ -3,6 +3,7 @@ package com.orms;
 public class Replace {
     final static String TemplateSignal = "{y, x, \"q\", \"z\"},";
     static String Signal1 = "Config.Signal1 = {\n";
+    static String Signal3 = "Config.Signal3 = {\n";
     static String Signal4 = "Config.Signal4 = {\n";
     static String Signal5 = "Config.Signal5 = {\n";
     static String SignalSh = "Config.SignalSh = {\n";
@@ -21,6 +22,7 @@ public class Replace {
 
     public static void sortSignal(String SignalI) {
         if (SignalI.charAt(4) == '1') Signal1 += Signal;
+        else if (SignalI.charAt(4) == '3') Signal3 += Signal;
         else if (SignalI.charAt(4) == '4') Signal4 += Signal;
         else if (SignalI.charAt(4) == '5') Signal5 += Signal;
         else if (SignalI.charAt(4) == 'P') SignalEx += Signal;
@@ -30,6 +32,7 @@ public class Replace {
 
     public static void clearCache() {
         Signal1 = "Config.Signal1 = {\n";
+        Signal3 = "Config.Signal3 = {\n";
         Signal4 = "Config.Signal4 = {\n";
         Signal5 = "Config.Signal5 = {\n";
         SignalSh = "Config.SignalSh = {\n";

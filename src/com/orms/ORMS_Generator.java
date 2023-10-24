@@ -15,7 +15,7 @@ public class ORMS_Generator {
     private static final int versionMajor = 2;
     private static final int versionMinor = 0;
 
-    private static final int getVersionMinorer = 2;
+    private static final int getVersionMinorer = 3;
 
     protected JPanel mainFrame;
 
@@ -195,7 +195,7 @@ public class ORMS_Generator {
     }
 
     private static void displayRules() {
-        JFrame displayFrame = new JFrame("Podmíky, které je nutno dodržet pro funkčnost");
+        JFrame displayFrame = new JFrame("Podmínky, které je nutno dodržet pro funkčnost");
         displayFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JTextArea textArea = new JTextArea(30, 80);
@@ -222,7 +222,7 @@ public class ORMS_Generator {
                 "\n" +
                 "Znamenaje, že 5VjKr1 je návěstidlo: 5 světelné, vjezdové od stanice Krupka a stojí u koleje čislo 1\n" +
                 "\n" +
-                "Návěstidla máme 1,4 a 5 světlové" +
+                "Návěstidla máme 1, 3, 4 a 5 světlové" +
                 "\n" +
                 "\n" +
                 "Seřaďovací návěstidla (pro posun): Nemusí se uvádět počet světel a Vj/Od, Sh - Shunt(Posun), Kr značí stanici, ve které se návěst nachází a 1 je čislo návěstidla: < N ShKr1" +
