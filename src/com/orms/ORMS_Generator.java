@@ -15,7 +15,7 @@ public class ORMS_Generator {
     private static final int versionMajor = 2;
     private static final int versionMinor = 0;
 
-    private static final int getVersionMinorer = 3;
+    private static final int versionMinorer = 3;
 
     protected JPanel mainFrame;
 
@@ -274,7 +274,7 @@ public class ORMS_Generator {
 
     public static void main() {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("ORMS Layout Generator v" + versionMajor + "." + versionMinor + "." + getVersionMinorer + " by Petsox");
+            JFrame frame = new JFrame("ORMS Layout Generator v" + versionMajor + "." + versionMinor + "." + versionMinorer + " by Petsox");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             ORMS_Generator generator = new ORMS_Generator();

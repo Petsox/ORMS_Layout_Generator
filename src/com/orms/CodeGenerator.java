@@ -35,10 +35,9 @@ public class CodeGenerator {
 
                     if (LayoutMap[i][j] != "") {
 
-                        if (LayoutMap[i][j].length() > 1) {
+                        if (LayoutMap[i][j].length() > 2) {
 
                             if (LayoutMap[i][j].charAt(2) == 'V') {
-
                                 Temp = TemplateSwitch.replace("x", Integer.toString(i));
                                 Temp = Temp.replace("y", Integer.toString(j));
                                 Temp = Temp.replace('z', LayoutMap[i][j].charAt(0));
