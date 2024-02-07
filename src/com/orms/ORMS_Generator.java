@@ -48,7 +48,7 @@ public class ORMS_Generator {
 
         scrollPane.getViewport().setPreferredSize(new Dimension(1200, 800));
 
-        JButton saveButton = new JButton("Exportovat LUa Kód");
+        JButton saveButton = new JButton("Exportovat Lua Kód");
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
